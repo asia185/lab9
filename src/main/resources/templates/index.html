@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+<div th:each="post : ${posts}">
+    <h2><span th:text="${post.title}"></span></h2>
+    <p><span th:text="${post.content}"></span></p>
+    <a th:href="@{'/delete/' + ${post.id}}">Usuń</a>
+</div>
+<form action="/newpost" method="POST">
+    Tytuł: <input type="text" name="title" size="150"/>
+    Treść:
+    <textarea name="content" cols="150" rows="5">
+
+        </textarea>
+    <input type="submit" value="Dodaj wpis" />
+</form>
+</body>
+</html>
